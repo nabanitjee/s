@@ -6,7 +6,7 @@ const SUPABASE_URL = "https://cfiepdxmtojapbryhxzd.supabase.co";
 const SUPABASE_ANON_KEY = "sb_publishable_GCKQ1aIwGxqAzmGQ7dXidw_W6OaSQlV";
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-const USER_ID_KEY = "jee_nexus_master"; // Unique cloud database row identity anchor
+const USER_ID_KEY = "jee_nexus_master"; 
 
 window.appData = {
   jeeMainDate: "2027-01-01",
@@ -45,7 +45,7 @@ async function saveData() {
     if (error) throw error;
     console.log("📊 Cloud Sync Complete: Database profile safely captured upstream.");
   } catch (err) {
-    console.error("❌ Cloud sync connection interrupted. Archiving backup snapshot locally:", err);
+    console.error("❌ Cloud sync connection failed. Archiving backup snapshot locally:", err);
     localStorage.setItem("jee_nexus_master_db", JSON.stringify(window.appData));
   }
 }
@@ -57,9 +57,8 @@ async function loadData() {
       .from('user_profiles')
       .select('app_data')
       .eq('id', USER_ID_KEY)
-      .maybeSingle(); // Gracefully handles empty results on initialization cleanly
+      .maybeSingle(); 
 
-    // 🚚 LEGACY MIGRATION INTERCEPTOR
     if (!data || error) {
       console.log("⚠️ No active cloud sync profile discovered. Commencing local migration audit...");
       const localRaw = localStorage.getItem("jee_nexus_master_db");
@@ -69,7 +68,7 @@ async function loadData() {
         const parsedLocal = JSON.parse(localRaw);
         if (parsedLocal) {
           Object.assign(window.appData, parsedLocal);
-          await saveData(); // Run background push to lock it in
+          await saveData(); 
           return;
         }
       }
@@ -77,7 +76,6 @@ async function loadData() {
       return;
     }
 
-    // Unpack data variables directly out of the JSONB field object envelope 
     const cloudData = data.app_data;
     if (cloudData) {
       window.appData.jeeMainDate = cloudData.jeeMainDate || "2027-01-01";
@@ -439,7 +437,7 @@ function fullyTriggerUIRefresh() {
 
 // Initialization Entry Points 
 document.addEventListener("DOMContentLoaded", async () => {
-  // 🔥 ASYNC LIFECYCLE BLOCK: Force navigation loops to hold execution configurations until cloud response resolves
+  // 🔥 ASYNC LIFECYCLE BLOCK: Holds navigation listeners execution until cloud values resolve
   await loadData();
 
   const mainInp = document.getElementById("jee-main-date");
@@ -471,6 +469,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   setTimeout(fullyTriggerUIRefresh, 150);
   setInterval(updateCountdowns, 60000);
 
+  // 🎯 FIXED CONTAINER QUERY MATCH: Listens explicitly to ".bottom-nav button" tags natively
   document.querySelectorAll(".bottom-nav button").forEach(button => {
     button.addEventListener("click", () => {
       const targetPageId = button.getAttribute("data-page");
