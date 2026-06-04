@@ -1,4 +1,5 @@
 // ==========================================================================
+// ==========================================================================
 // JEE NEXUS CENTRAL APPLICATION CORE ENGINE (SUPABASE CLOUD EDITION)
 // ==========================================================================
 
@@ -7,6 +8,7 @@ const SUPABASE_ANON_KEY = "sb_publishable_GCKQ1aIwGxqAzmGQ7dXidw_W6OaSQlV";
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const USER_ID_KEY = "jee_nexus_master"; 
+
 
 window.appData = {
   jeeMainDate: "2027-01-01",
