@@ -313,7 +313,6 @@ function renderStreak() {
   el.textContent = window.appData.streak !== undefined ? window.appData.streak : 0;
 }
 
-// Active dynamic date milestone automation logic
 function updateActivity() {
   if (!window.appData) return;
 
@@ -359,7 +358,6 @@ function toggleWidgetVisibility(widgetKey, isVisible) {
   }
 }
 
-// Layout panel component switches
 function applyWidgetVisibilityLayouts() {
   const targets = {
     mission: document.getElementById("widget-mission-container"),
@@ -439,7 +437,6 @@ function fullyTriggerUIRefresh() {
 
 // Initialization Entry Points 
 document.addEventListener("DOMContentLoaded", async () => {
-  // 🔥 ASYNC LIFECYCLE BLOCK: Force hold execution sequences until Supabase response yields cloud properties
   await loadData();
 
   const mainInp = document.getElementById("jee-main-date");
@@ -471,7 +468,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   setTimeout(fullyTriggerUIRefresh, 150);
   setInterval(updateCountdowns, 60000);
 
-  // 🎯 UNIFORM COMPATIBILITY QUERY SELECTOR LOOP (Grabs target actions seamlessly)
+  // 🎯 STABLE SINGLE SELECTOR TARGET BINDING
   document.querySelectorAll(".bottom-nav button").forEach(button => {
     button.addEventListener("click", () => {
       const targetPageId = button.getAttribute("data-page");
