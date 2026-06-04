@@ -52,11 +52,10 @@
 
     <div id="red-flag-alert-zone"></div>
 
-    <!-- 📊 REDESIGNED CLICKABLE PYQ METRICS CARD ELEMENT -->
+    <!-- 📊 PYQ METRICS ACCENT CARD -->
     <div class="stats-grid" style="grid-template-columns: 1fr; margin-bottom: 12px;">
       <div class="stat-card clickable-nexus-card" id="nexus-pyq-card-button" style="cursor: pointer; transition: transform 0.2s ease, box-shadow 0.3s ease; display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; min-height: 85px; background: linear-gradient(135deg, #0f172a, #1e1b4b); border: 1px solid rgba(168, 85, 247, 0.2); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);">
 
-        <!-- Left Side: Title and Active Tier Status -->
         <div style="text-align: left; display: flex; flex-direction: column; justify-content: center;">
           <span style="font-size: 0.72rem; font-weight: 800; letter-spacing: 1px; color: #94a3b8; text-transform: uppercase;">PYQ Progress</span>
           <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
@@ -65,7 +64,6 @@
           </div>
         </div>
 
-        <!-- Right Side: Circular Neon Progress Ring and Counter -->
         <div style="position: relative; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;">
           <svg style="transform: rotate(-90deg); width: 64px; height: 64px;">
             <circle cx="32" cy="32" r="26" stroke="rgba(255,255,255,0.05)" stroke-width="5" fill="transparent" />
@@ -301,9 +299,9 @@
     <div class="card">
       <h3>📅 Core Exam Target Dates</h3>
       <label style="font-size:0.85rem; color:#94a3b8; font-weight:bold;">JEE Main Date</label>
-      <input id="jee-main-date" type="date" onchange="window.appData.jeeMainDate = this.value; window.saveData(); window.updateCountdowns();">
+      <input id="jee-main-date" type="date" onchange="window.saveData(); window.updateCountdowns();">
       <label style="font-size:0.85rem; color:#94a3b8; font-weight:bold; margin-top:10px;">JEE Advanced Date</label>
-      <input id="jee-advanced-date" type="date" onchange="window.appData.jeeAdvancedDate = this.value; window.saveData(); window.updateCountdowns();">
+      <input id="jee-advanced-date" type="date" onchange="window.saveData(); window.updateCountdowns();">
     </div>
 
     <div class="card">
@@ -352,7 +350,7 @@
     </div>
   </div>  
 
-  <!-- 🧭 PERSISTED BOTTOM CONTAINER NAVIGATION COUPLING -->
+  <!-- 🧭 SINGLE, UNIFIED BOTTOM NAVIGATION BLOCK -->
   <nav class="bottom-nav">
     <button data-page="dashboard-page">🏠</button>
     <button data-page="chapters-page">📚</button>
