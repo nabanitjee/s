@@ -7,21 +7,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app-container">
-        <div id="intro-screen" class="screen active">
-            <div class="stars"></div>
-            <h1 class="flicker" onclick="startExperience()">CLICK TO START THE MAGIC!</h1>
-        </div>
-
-        <div id="chat-screen" class="screen">
-            <div class="chat-header">For Sreya's 19th!</div>
-            <div id="chat-stream">
-                <div class="bubble">A LITTLE TEASE ;)<br>Okay, Sreya, you might be 19, but I'm pretty sure you still need adult supervision.</div>
-                <div class="bubble">DON'T PANIC! 🚀<br>Yes, I'm going ghost mode for JEE! But no way I'd miss your big day.</div>
-                <div class="bubble">HAPPY 19th BIRTHDAY, SREYA! 🎂<br>May this year be amazing!</div>
+    <div id="app-viewport">
+        <section id="step-0" class="screen show">
+            <div class="content-wrapper">
+                <div class="glass-quote">
+                    <p id="quote">"The purpose of life is not to be happy. It is to be useful, to be honorable, to be compassionate, to have it make some difference that you have lived and lived well."</p>
+                </div>
+                <button class="next-btn" onclick="app.next()">NEXT</button>
             </div>
-            <button id="final-btn" onclick="celebrate()">Final Message!</button>
-        </div>
+        </section>
+
+        <section id="step-1" class="screen">
+            <div id="chat-stream">
+                <div class="chat-bubble">A LITTLE TEASE ;)<br>Okay, Sreya, you might be 19, but I'm pretty sure you still need adult supervision.</div>
+                <div class="chat-bubble">DON'T PANIC! 🚀<br>Yes, I'm going ghost mode for JEE! But no way I'd miss your big day.</div>
+            </div>
+            <button class="next-btn" onclick="app.celebrate()">FINAL MESSAGE!</button>
+        </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
