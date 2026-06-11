@@ -1,52 +1,26 @@
-:root {
-    --glass: rgba(255, 255, 255, 0.08);
-    --border: 1px solid rgba(255, 255, 255, 0.2);
-    --text: #ffffff;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #050508; color: #fff; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; height: 100vh; overflow: hidden; }
+
+#app-container { width: 100%; max-width: 400px; height: 100%; border-left: 1px solid #222; border-right: 1px solid #222; position: relative; }
+
+.screen { display: none; height: 100%; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+.active { display: flex; }
+
+.bubble { 
+    background: rgba(255, 255, 255, 0.07); 
+    backdrop-filter: blur(20px); 
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 20px; border-radius: 24px; margin-bottom: 15px; 
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    animation: slideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-body {
-    background: radial-gradient(circle at bottom, #1b2735 0%, #090a0f 100%);
-    color: var(--text);
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+#final-btn { 
+    background: linear-gradient(135deg, #6e8efb, #a777e3); 
+    border: none; padding: 15px 40px; border-radius: 50px; color: white; 
+    font-weight: 700; cursor: pointer; transition: transform 0.3s;
 }
 
-.main-container { width: 100%; max-width: 400px; padding: 20px; }
-
-.screen { backdrop-filter: blur(20px); transition: opacity 0.5s ease; }
-
-.bubble {
-    background: var(--glass);
-    border: var(--border);
-    padding: 15px;
-    border-radius: 20px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    font-size: 0.9rem;
-    line-height: 1.4;
-}
-
-.glow-text { 
-    text-shadow: 0 0 10px rgba(255,255,255,0.5); 
-    cursor: pointer;
-    animation: float 3s ease-in-out infinite;
-}
-
-.btn {
-    background: linear-gradient(45deg, #6a11cb, #2575fc);
-    border: none;
-    color: white;
-    padding: 15px 30px;
-    border-radius: 50px;
-    cursor: pointer;
-    width: 100%;
-    font-weight: bold;
-}
-
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-.hidden { display: none; }
+@keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.flicker { animation: blink 2s infinite; cursor: pointer; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
