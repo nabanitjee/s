@@ -1,26 +1,29 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: #050508; color: #fff; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; height: 100vh; overflow: hidden; }
+:root { --glass: rgba(255, 255, 255, 0.08); --accent: #8b5cf6; }
 
-#app-container { width: 100%; max-width: 400px; height: 100%; border-left: 1px solid #222; border-right: 1px solid #222; position: relative; }
+* { box-sizing: border-box; }
+body { background: #050505; font-family: 'Inter', sans-serif; display: flex; justify-content: center; height: 100vh; overflow: hidden; }
 
-.screen { display: none; height: 100%; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
-.active { display: flex; }
+#app-viewport { width: 100%; max-width: 400px; height: 100%; position: relative; background: radial-gradient(circle at top, #1e293b, #050505); }
 
-.bubble { 
-    background: rgba(255, 255, 255, 0.07); 
-    backdrop-filter: blur(20px); 
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 20px; border-radius: 24px; margin-bottom: 15px; 
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-    animation: slideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.screen { position: absolute; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 30px; opacity: 0; pointer-events: none; transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+.screen.show { opacity: 1; pointer-events: auto; }
+
+.glass-quote { 
+    background: var(--glass); backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.1);
+    padding: 30px; border-radius: 30px; color: #e2e8f0; font-style: italic; margin-bottom: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
-#final-btn { 
-    background: linear-gradient(135deg, #6e8efb, #a777e3); 
-    border: none; padding: 15px 40px; border-radius: 50px; color: white; 
-    font-weight: 700; cursor: pointer; transition: transform 0.3s;
+.next-btn { 
+    background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white; padding: 15px 40px; border-radius: 50px; cursor: pointer;
+    backdrop-filter: blur(10px); transition: all 0.3s;
 }
 
-@keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-.flicker { animation: blink 2s infinite; cursor: pointer; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+.next-btn:hover { background: var(--accent); border-color: var(--accent); }
+
+.chat-bubble { 
+    background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px);
+    padding: 20px; border-radius: 20px; color: white; margin-bottom: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
